@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Discord Bot Panel</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Discord Bot</p>
+        <h1>Kufur Engel Paneli</h1>
+      </div>
+      <form method="post" action="{{ url_for('logout') }}">
+        <button class="secondary" type="submit">Cikis</button>
+      </form>
+    </header>
+
+    <main class="layout">
+      <section class="panel stats">
+        <div>
+          <span>Bot</span>
+          <strong>{{ bot_name }}</strong>
+        </div>
+        <div>
+          <span>Yasakli kelime</span>
+          <strong>{{ config.banned_words|length }}</strong>
+        </div>
+        <div>
+          <span>Toplam uyari</span>
+          <strong>{{ total_warnings }}</strong>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Ayarlar</h2>
+        <form class="grid-form" method="post" action="{{ url_for('update_settings') }}">
+          <label>
+            Uyari limiti
+            <input name="warning_limit" type="number" min="1" value="{{ config.warning_limit }}">
+          </label>
+          <label>
+            Timeout dakika
+            <input name="timeout_minutes" type="number" min="1" value="{{ config.timeout_minutes }}">
+          </label>
+          <label>
+            Log kanal ID
+            <input name="log_channel_id" type="text" value="{{ config.log_channel_id }}" placeholder="123456789012345678">
+          </label>
+          <label class="checkbox">
+            <input name="ignore_admins" type="checkbox" {% if config.ignore_admins %}checked{% endif %}>
+            Adminleri filtre disi birak
+          </label>
+          <button type="submit">Kaydet</button>
+        </form>
+      </section>
+
+      <section class="panel">
+        <h2>Yasakli kelimeler</h2>
+        <form class="add-word" method="post" action="{{ url_for('add_word') }}">
+          <input name="word" type="text" placeholder="Kelime ekle" required>
+          <button type="submit">Ekle</button>
+        </form>
+
+        <div class="word-list">
+          {% for word in config.banned_words %}
+            <form method="post" action="{{ url_for('delete_word') }}">
+              <input type="hidden" name="word" value="{{ word }}">
+              <span>{{ word }}</span>
+              <button class="danger" type="submit">Sil</button>
+            </form>
+          {% else %}
+            <p class="empty">Henuz kelime eklenmedi.</p>
+          {% endfor %}
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Uyarilar</h2>
+        <p class="muted">Kullanicilar limit dolunca otomatik timeout alir. Bu buton mevcut uyari sayaclarini temizler.</p>
+        <form method="post" action="{{ url_for('clear_warnings') }}">
+          <button class="danger" type="submit">Uyarilari temizle</button>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>

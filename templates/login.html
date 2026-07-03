@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bot Panel Giris</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  </head>
+  <body class="login-page">
+    <main class="login-box">
+      <p class="eyebrow">Discord Bot</p>
+      <h1>Panel girisi</h1>
+      <form method="post">
+        <label for="password">Sifre</label>
+        <input id="password" name="password" type="password" required autofocus>
+        {% if error %}
+          <p class="error">{{ error }}</p>
+        {% endif %}
+        <button type="submit">Giris yap</button>
+      </form>
+    </main>
+  </body>
+</html>

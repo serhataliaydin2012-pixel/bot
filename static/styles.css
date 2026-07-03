@@ -1,0 +1,208 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #f5f7fb;
+  color: #1f2937;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.topbar {
+  align-items: center;
+  background: #ffffff;
+  border-bottom: 1px solid #d9e1ec;
+  display: flex;
+  justify-content: space-between;
+  padding: 24px clamp(18px, 4vw, 48px);
+}
+
+h1,
+h2,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  font-size: 28px;
+  margin-bottom: 0;
+}
+
+h2 {
+  font-size: 20px;
+}
+
+.eyebrow {
+  color: #2563eb;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+
+.layout {
+  display: grid;
+  gap: 18px;
+  margin: 0 auto;
+  max-width: 1100px;
+  padding: 28px 18px 48px;
+}
+
+.panel {
+  background: #ffffff;
+  border: 1px solid #d9e1ec;
+  border-radius: 8px;
+  padding: 22px;
+}
+
+.stats {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.stats div {
+  background: #eef6f2;
+  border: 1px solid #cae5d7;
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.stats span {
+  color: #4b5563;
+  display: block;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.stats strong {
+  display: block;
+  font-size: 22px;
+  overflow-wrap: anywhere;
+}
+
+form {
+  margin: 0;
+}
+
+.grid-form {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+label {
+  color: #374151;
+  display: grid;
+  font-size: 14px;
+  gap: 8px;
+}
+
+input {
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 15px;
+  min-height: 42px;
+  padding: 10px 12px;
+  width: 100%;
+}
+
+.checkbox {
+  align-items: center;
+  display: flex;
+  gap: 10px;
+}
+
+.checkbox input {
+  min-height: auto;
+  width: auto;
+}
+
+button {
+  background: #2563eb;
+  border: 0;
+  border-radius: 8px;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 700;
+  min-height: 42px;
+  padding: 10px 16px;
+}
+
+button.secondary {
+  background: #475569;
+}
+
+button.danger {
+  background: #dc2626;
+}
+
+.add-word {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 1fr auto;
+  margin-bottom: 16px;
+}
+
+.word-list {
+  display: grid;
+  gap: 10px;
+}
+
+.word-list form {
+  align-items: center;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.muted,
+.empty {
+  color: #64748b;
+}
+
+.error {
+  color: #b91c1c;
+  margin-bottom: 12px;
+}
+
+.login-page {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  padding: 18px;
+}
+
+.login-box {
+  background: #ffffff;
+  border: 1px solid #d9e1ec;
+  border-radius: 8px;
+  max-width: 420px;
+  padding: 28px;
+  width: 100%;
+}
+
+.login-box button {
+  margin-top: 14px;
+  width: 100%;
+}
+
+@media (max-width: 720px) {
+  .topbar {
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .stats,
+  .grid-form,
+  .add-word {
+    grid-template-columns: 1fr;
+  }
+}
